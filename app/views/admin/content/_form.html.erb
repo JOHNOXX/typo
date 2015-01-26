@@ -148,6 +148,7 @@
     </ul>
   </div>    
 
+<% if current_user.admin? %>
   <div class=''>
     <h4><%= _("Merge Articles") %></h4>
     <div class='class'>
@@ -156,6 +157,7 @@
         <input id='merge' type="submit" value="<%= _('Merge') %>" name="merge" />
       </label>
     </div>
+<% end %>
 
   </div>    
   </div>
