@@ -53,7 +53,13 @@ class Admin::ContentController < Admin::BaseController
   end
 
   def merge
-    puts "merge"
+    unless current_user.admin?
+      flash[:notice] = _('Error, you are not allowed to perform this action')
+      return(redirect_to :action => 'index')
+    end
+
+    flash[:notice] = _('Article was successfully merged')
+    redirect_to :action => 'index'
   end
 
   def insert_editor
