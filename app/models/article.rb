@@ -80,6 +80,16 @@ class Article < Content
     Article.exists?({:parent_id => self.id})
   end
 
+  def merge_with(other_article_id)
+    return nil if other_article_id == self.id
+
+    return nil if ! Article.exists?(other_article_id)
+
+    article = Article.find(other_article_id)
+
+    return article
+  end
+
   attr_accessor :draft, :keywords
 
   has_state(:state,
