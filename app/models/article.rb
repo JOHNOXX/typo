@@ -89,7 +89,13 @@ class Article < Content
 
     self.body += article.body
 
+    article.comments.each do |comment|
+      comment.article_id = self.id
+    end
+
     self.save
+
+    article = Article.find(other_article_id)
 
     article.destroy
 
