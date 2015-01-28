@@ -58,6 +58,9 @@ class Admin::ContentController < Admin::BaseController
       return(redirect_to :action => 'index')
     end
 
+    @article = Article.find(params[:id])
+    @article.merge_with(params[:merge_with])
+
     flash[:notice] = _('Article was successfully merged')
     redirect_to :action => 'index'
   end

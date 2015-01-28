@@ -87,7 +87,9 @@ class Article < Content
 
     article = Article.find(other_article_id)
 
-    return article
+    article.destroy
+
+    return self
   end
 
   attr_accessor :draft, :keywords
