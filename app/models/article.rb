@@ -84,8 +84,12 @@ class Article < Content
     return nil if other_article_id == self.id
 
     return nil if ! Article.exists?(other_article_id)
-
+    
     article = Article.find(other_article_id)
+
+    self.body += article.body
+
+    self.save
 
     article.destroy
 
