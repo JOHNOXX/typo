@@ -88,12 +88,12 @@ class Article < Content
     article = Article.find(other_article_id)
 
     self.body += article.body
+    self.save
 
     article.comments.each do |comment|
       comment.article_id = self.id
+      comment.save
     end
-
-    self.save
 
     article = Article.find(other_article_id)
 
